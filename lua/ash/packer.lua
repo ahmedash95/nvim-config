@@ -84,4 +84,11 @@ use {
 
     use 'phpactor/phpactor'
 
+    use 'lewis6991/gitsigns.nvim'
+
+    use 'ahmedash95/deep-symbols'
+
+    use 'github/copilot.vim'
+
+
 end)
