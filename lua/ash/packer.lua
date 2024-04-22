@@ -78,4 +78,10 @@ use {
 
 	use 'projekt0n/github-nvim-theme'
 
+    use 'mhartington/formatter.nvim'
+
+    use 'nvim-tree/nvim-tree.lua'
+
+    use 'phpactor/phpactor'
+
 end)
