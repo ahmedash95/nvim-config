@@ -90,5 +90,8 @@ use {
 
     use 'github/copilot.vim'
 
+    use 'Pocco81/auto-save.nvim'
+
+    use 'tpope/vim-fugitive'
 
 end)
