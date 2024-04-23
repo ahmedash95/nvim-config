@@ -94,4 +94,6 @@ use {
 
     use 'tpope/vim-fugitive'
 
+    use 'tpope/vim-surround'
+
 end)
