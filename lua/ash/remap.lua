@@ -7,6 +7,9 @@ local function map(mode, lhs, rhs, opts)
 end
 
 vim.g.mapleader = " "
+
+vim.keymap.set('v', '<leader>c', '"+y', { noremap = true, silent = true }) -- copy text to clipboard
+
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>=", ":vertical resize +5<CR>")
 vim.keymap.set("n", "<leader>-", ":vertical resize -5<CR>")
@@ -31,3 +34,8 @@ map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', {desc = "Code a
 -- Mapping Cmd+[ and Cmd+] for navigation through the jump list
 map('n', '<C-[>', '<C-o>', {desc = "Navigate to previous cursor position"})
 map('n', '<C-]>', '<C-i>', {desc = "Navigate to next cursor position"})
+
+
+
+-- conform (code formatter)
+vim.keymap.set('n', '<leader>l', ':Format<CR>', { noremap = true, silent = true })

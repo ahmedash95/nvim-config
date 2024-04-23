@@ -71,9 +71,9 @@ use {
         use {
             '3rd/image.nvim',
             requires = {'vhyrro/luarocks.nvim'},
-            config = function()
+                    config = function()
                 -- Plugin configuration goes here
-            end,
+                end,
         }
 
 	use 'projekt0n/github-nvim-theme'
@@ -95,5 +95,4 @@ use {
     use 'tpope/vim-fugitive'
 
     use 'tpope/vim-surround'
-
 end)
