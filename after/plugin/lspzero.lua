@@ -17,7 +17,15 @@ cmp.setup({
 })
 
 -- here you can setup the language servers
-require'lspconfig'.phpactor.setup{}
-require'lspconfig'.java_language_server.setup{}
-
+-- require'lspconfig'.phpactor.setup{}
+-- require'lspconfig'.java_language_server.setup{}
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {"phpactor"},
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+  },
+})
 

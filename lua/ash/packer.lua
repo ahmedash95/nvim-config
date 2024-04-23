@@ -24,8 +24,8 @@ return require('packer').startup(function(use)
   branch = 'v3.x',
   requires = {
     --- Uncomment the two plugins below if you want to manage the language servers from neovim
-    -- {'williamboman/mason.nvim'},
-    -- {'williamboman/mason-lspconfig.nvim'},
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
 
     {'neovim/nvim-lspconfig'},
     {'hrsh7th/nvim-cmp'},
@@ -95,4 +95,6 @@ use {
     use 'tpope/vim-fugitive'
 
     use 'tpope/vim-surround'
+
+    use { "catppuccin/nvim", as = "catppuccin" }
 end)
