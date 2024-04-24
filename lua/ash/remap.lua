@@ -26,7 +26,7 @@ vim.keymap.set("n", "<C-o>", ":lua require(\"deepsymbols\").get_symbols()<CR>")
 -- phpactor
 map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', {desc = "Rename"})
 map('n', '<leader>fd', '<cmd>lua vim.lsp.buf.definition()<CR>', {desc = "Go to definition"})
-map('n', '<leader>us', '<cmd>lua vim.lsp.buf.references()<CR>', {desc = "Find usages"})
+map('n', '<leader>us', ':lua require(\'telescope.builtin\').lsp_references()<CR>', {desc = "Find usages"})
 map('n', '<leader>im', '<cmd>lua vim.lsp.buf.implementation()<CR>', {desc = "Go to implementation"})
 map('n', '<leader>sh', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {desc = "Signature help"})
 map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', {desc = "Code actions"})
