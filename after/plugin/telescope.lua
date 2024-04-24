@@ -5,7 +5,7 @@ require('telescope').setup({
     layout_config = {
       prompt_position = "top",
       mirror = true,
-      width = 0.2,
+      width = 0.7,
     },
   }
 })
