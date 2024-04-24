@@ -1,5 +1,6 @@
 require("ash.remap");
 
+vim.opt.termguicolors = true
 vim.wo.relativenumber = true  -- Enable relative line numbers
 vim.wo.number = true          -- Enable absolute line number for the current line
 vim.wo.cursorline = true      -- Highlight the line where the cursor is located
