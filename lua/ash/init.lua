@@ -1,5 +1,3 @@
-require("ash.remap");
-
 vim.opt.termguicolors = true
 vim.wo.relativenumber = true  -- Enable relative line numbers
 vim.wo.number = true          -- Enable absolute line number for the current line
@@ -9,3 +7,5 @@ vim.opt.softtabstop = 4     -- Set the number of spaces tabs count for in insert
 vim.opt.shiftwidth = 4      -- Set the number of spaces to use for each step of (auto)indent
 vim.opt.expandtab = true    -- Use spaces instead of tabs
 
+require("ash.remap");
+require("ash.packages");

@@ -1,26 +1,31 @@
-vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
 
-return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+vim.opt.rtp:prepend(lazypath)
 
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.6',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
-
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-    })
-
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-
-    use {
+local plugins = {
+    {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.6',
+        dependencies = { { 'nvim-lua/plenary.nvim' } }
+    },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate'
+    },
+    {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
-        requires = {
-            --- Uncomment the two plugins below if you want to manage the language servers from neovim
+        dependencies = {
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
 
@@ -29,11 +34,10 @@ return require('packer').startup(function(use)
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'L3MON4D3/LuaSnip' },
         }
-    }
-
-    use {
+    },
+    {
         'kawre/leetcode.nvim',
-        requires = {
+        dependencies = {
             'nvim-telescope/telescope.nvim',
             'nvim-lua/plenary.nvim', -- required by telescope
             'MunifTanjim/nui.nvim',
@@ -41,126 +45,99 @@ return require('packer').startup(function(use)
             'rcarriga/nvim-notify',
             'nvim-tree/nvim-web-devicons'
         },
-        config = function()
-            -- configuration goes here
-        end,
         run = ":TSUpdate html"
-    }
+    },
+    'nvim-tree/nvim-web-devicons',
 
-    use 'nvim-tree/nvim-web-devicons'
-    use 'terryma/vim-multiple-cursors'
+    'terryma/vim-multiple-cursors',
 
+    'projekt0n/github-nvim-theme',
 
-    use {
-        'vhyrro/luarocks.nvim',
-        config = function()
-            -- Rocks configuration
-            require('luarocks'):init {
-                rocks = { "magick" },
-            }
-        end,
-        opt = true,
-        cmd = { "luarocks" },
-        run = ':PackerCompile',
-    }
+    'mhartington/formatter.nvim',
 
-    -- image.nvim configuration
-    use {
-        '3rd/image.nvim',
-        requires = { 'vhyrro/luarocks.nvim' },
-        config = function()
-            -- Plugin configuration goes here
-        end,
-    }
+    'nvim-tree/nvim-tree.lua',
 
-    use 'projekt0n/github-nvim-theme'
+    'phpactor/phpactor',
 
-    use 'mhartington/formatter.nvim'
+    'lewis6991/gitsigns.nvim',
 
-    use 'nvim-tree/nvim-tree.lua'
+    'ahmedash95/deep-symbols',
 
-    use 'phpactor/phpactor'
+    'github/copilot.vim',
 
-    use 'lewis6991/gitsigns.nvim'
+    'Pocco81/auto-save.nvim',
 
-    use 'ahmedash95/deep-symbols'
+    'tpope/vim-fugitive',
 
-    use 'github/copilot.vim'
+    'tpope/vim-surround',
 
-    use 'Pocco81/auto-save.nvim'
+    'f-person/auto-dark-mode.nvim',
 
-    use 'tpope/vim-fugitive'
-
-    use 'tpope/vim-surround'
-
-    use 'f-person/auto-dark-mode.nvim'
-
-    use {
+    {
         "startup-nvim/startup.nvim",
-        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-    }
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    },
 
-    use {
+    {
         'numToStr/Comment.nvim',
-        config = function()
+        init = function()
             require('Comment').setup()
         end
-    }
+    },
 
-    use { "catppuccin/nvim", as = "catppuccin" }
+    { "catppuccin/nvim", as = "catppuccin" },
 
 
-    use {
+    {
         'nvim-lualine/lualine.nvim',
-        config = function()
+        init = function()
             require('lualine').setup()
         end
-    }
+    },
 
-    use {
+    {
         'adalessa/laravel.nvim',
-        requires = { -- Declare dependencies using 'requires' in packer
+        dependencies = { -- Declare dependencies using 'dependencies' in packer
             'nvim-telescope/telescope.nvim',
             'tpope/vim-dotenv',
             'MunifTanjim/nui.nvim',
             'nvimtools/none-ls.nvim'
         },
-        cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" }, -- Load plugin on these commands
+        build = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" }, -- Load plugin on these commands
         keys = {                                                           -- Map keys only after the plugin is loaded
             { "n", "<leader>la", ":Laravel artisan<cr>" },
             { "n", "<leader>lr", ":Laravel routes<cr>" },
             { "n", "<leader>lm", ":Laravel related<cr>" },
         },
-        config = function()
+        init = function()
             -- Assuming there's a setup or configuration function available within the plugin
             require('laravel').setup()
         end
-    }
+    },
 
-    use {
+    {
         "pmizio/typescript-tools.nvim",
-        requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    }
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    },
 
-    use {
+    {
         "nvim-telescope/telescope-live-grep-args.nvim",
-        config = function()
+        init = function()
             require("telescope").load_extension("live_grep_args")
         end
-    }
-
-    use({
+    },
+    {
         'andrew-george/telescope-themes',
-        config = function()
+        init = function()
             require('telescope').load_extension('themes')
         end
-    })
-
-    use { 
+    },
+    {
         'jonarrien/telescope-cmdline.nvim' ,
-        config = function()
+        init = function()
             require('telescope').load_extension('cmdline')
-        end
+        end,
     }
+}
 
-end)
+require("lazy").setup(plugins, {})
