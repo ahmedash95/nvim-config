@@ -155,4 +155,12 @@ return require('packer').startup(function(use)
             require('telescope').load_extension('themes')
         end
     })
+
+    use { 
+        'jonarrien/telescope-cmdline.nvim' ,
+        config = function()
+            require('telescope').load_extension('cmdline')
+        end
+    }
+
 end)
