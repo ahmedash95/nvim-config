@@ -126,7 +126,7 @@ return require('packer').startup(function(use)
             'nvimtools/none-ls.nvim'
         },
         cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" }, -- Load plugin on these commands
-        keys = {                                                       -- Map keys only after the plugin is loaded
+        keys = {                                                           -- Map keys only after the plugin is loaded
             { "n", "<leader>la", ":Laravel artisan<cr>" },
             { "n", "<leader>lr", ":Laravel routes<cr>" },
             { "n", "<leader>lm", ":Laravel related<cr>" },
@@ -137,4 +137,22 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {
+        "pmizio/typescript-tools.nvim",
+        requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    }
+
+    use {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        config = function()
+            require("telescope").load_extension("live_grep_args")
+        end
+    }
+
+    use({
+        'andrew-george/telescope-themes',
+        config = function()
+            require('telescope').load_extension('themes')
+        end
+    })
 end)

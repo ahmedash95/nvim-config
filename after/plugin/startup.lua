@@ -1,3 +1,1 @@
-require("startup").setup()
-
--- vim.cmd(":Startup display")
+require "startup".setup()
