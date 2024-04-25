@@ -108,4 +108,33 @@ return require('packer').startup(function(use)
     }
 
     use { "catppuccin/nvim", as = "catppuccin" }
+
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        config = function()
+            require('lualine').setup()
+        end
+    }
+
+    use {
+        'adalessa/laravel.nvim',
+        requires = { -- Declare dependencies using 'requires' in packer
+            'nvim-telescope/telescope.nvim',
+            'tpope/vim-dotenv',
+            'MunifTanjim/nui.nvim',
+            'nvimtools/none-ls.nvim'
+        },
+        cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" }, -- Load plugin on these commands
+        keys = {                                                       -- Map keys only after the plugin is loaded
+            { "n", "<leader>la", ":Laravel artisan<cr>" },
+            { "n", "<leader>lr", ":Laravel routes<cr>" },
+            { "n", "<leader>lm", ":Laravel related<cr>" },
+        },
+        config = function()
+            -- Assuming there's a setup or configuration function available within the plugin
+            require('laravel').setup()
+        end
+    }
+
 end)
