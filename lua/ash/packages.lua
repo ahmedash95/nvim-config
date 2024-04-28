@@ -150,24 +150,31 @@ local plugins = {
     { 'jbyuki/one-small-step-for-vimkind' },
     { "rcarriga/nvim-dap-ui",             dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
     {
-        'folke/zen-mode.nvim',
+        "Pocco81/true-zen.nvim",
         config = function()
-            require('zen-mode').setup({
-                window = {
-                    width = 0.85,
-                    height = 0.90,
-                    options = {
-                        signcolumn = "no",
-                        number = false,
-                        relativenumber = false,
-                        cursorline = false,
-                        cursorcolumn = false,
-                        foldcolumn = "0",
-                        list = false,
-                    },
+            require("true-zen").setup({
+                modes = {
+                    narrow = {
+                        folds_style = "invisible",
+                        run_ataraxis = true,
+                    }
+                },
+                integrations = {
+                    lualine = true,
                 },
             })
         end
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+        init = function()
+            require("noice").setup()
+        end,
     }
 }
 

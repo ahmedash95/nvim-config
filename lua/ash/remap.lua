@@ -32,6 +32,7 @@ map('n', '<leader>im', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = "Go
 map('n', '<leader>sh', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { desc = "Signature help" })
 map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code actions" })
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { desc = "Displays documentation on the cursor" })
+map('n', '<leader>ds', '<cmd>:Telescope lsp_document_symbols<CR>', { desc = "Document symbols" })
 --
 -- Mapping Cmd+[ and Cmd+] for navigation through the jump list
 map('n', '<leader>[', '<C-o>', { desc = "Navigate to previous cursor position" })
@@ -51,3 +52,11 @@ vim.keymap.set('n', '<leader>do', ':lua require"dapui".toggle()<CR>', { noremap 
 
 -- ZenMode
 vim.keymap.set('n', 'Z', ':ZenMode<CR>', { noremap = true, silent = true })
+
+-- True Zen
+vim.keymap.set('n', '<leader>zz', ':TZAtaraxis<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>zn", ":TZNarrow<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>zn", ":'<,'>TZNarrow<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>zf", ":TZFocus<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>zm", ":TZMinimalist<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>za", ":TZAtaraxis<CR>", { noremap = true, silent = true })
