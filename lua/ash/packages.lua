@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 
 vim.opt.rtp:prepend(lazypath)
@@ -85,7 +85,7 @@ local plugins = {
         end
     },
 
-    { "catppuccin/nvim", as = "catppuccin" },
+    { "catppuccin/nvim",         as = "catppuccin" },
 
 
     {
@@ -104,7 +104,7 @@ local plugins = {
             'nvimtools/none-ls.nvim'
         },
         build = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" }, -- Load plugin on these commands
-        keys = {                                                           -- Map keys only after the plugin is loaded
+        keys = {                                                             -- Map keys only after the plugin is loaded
             { "n", "<leader>la", ":Laravel artisan<cr>" },
             { "n", "<leader>lr", ":Laravel routes<cr>" },
             { "n", "<leader>lm", ":Laravel related<cr>" },
@@ -133,10 +133,41 @@ local plugins = {
         end
     },
     {
-        'jonarrien/telescope-cmdline.nvim' ,
+        'jonarrien/telescope-cmdline.nvim',
         init = function()
             require('telescope').load_extension('cmdline')
         end,
+    },
+    { 'akinsho/toggleterm.nvim', version = "*",    config = true },
+    {
+        'nosduco/remote-sshfs.nvim',
+        init = function()
+            require('remote-sshfs').setup({})
+            require('telescope').load_extension 'remote-sshfs'
+        end
+    },
+    { 'mfussenegger/nvim-dap' },
+    { 'jbyuki/one-small-step-for-vimkind' },
+    { "rcarriga/nvim-dap-ui",             dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+    {
+        'folke/zen-mode.nvim',
+        config = function()
+            require('zen-mode').setup({
+                window = {
+                    width = 0.85,
+                    height = 0.90,
+                    options = {
+                        signcolumn = "no",
+                        number = false,
+                        relativenumber = false,
+                        cursorline = false,
+                        cursorcolumn = false,
+                        foldcolumn = "0",
+                        list = false,
+                    },
+                },
+            })
+        end
     }
 }
 
