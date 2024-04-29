@@ -65,7 +65,14 @@ local plugins = {
 
     'github/copilot.vim',
 
-    'Pocco81/auto-save.nvim',
+    {
+        'Pocco81/auto-save.nvim',
+        config = function()
+            require('auto-save').setup({
+                execution_message = { message = function() return "" end }
+            })
+        end
+    },
 
     'tpope/vim-fugitive',
 
@@ -175,7 +182,8 @@ local plugins = {
         init = function()
             require("noice").setup()
         end,
-    }
+    },
+    { 'David-Kunz/treesitter-unit' }
 }
 
 require("lazy").setup(plugins, {})

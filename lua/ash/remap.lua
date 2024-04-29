@@ -51,7 +51,29 @@ vim.keymap.set('n', '<leader>do', ':lua require"dapui".toggle()<CR>', { noremap 
 
 
 -- ZenMode
-vim.keymap.set('n', 'Z', ':ZenMode<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'Z', function()
+    -- Trigger treesitter-unit to make the selection
+    require "treesitter-unit".select()
+
+    -- Defer the execution to ensure the selection is made
+    vim.defer_fn(function()
+        -- Get the first and last lines of the current visual selection
+        local first = vim.fn.line('v')
+        local last = vim.fn.line('.')
+
+        -- Load the truezen API
+        local truezen = require("true-zen")
+
+        -- Apply the narrowing using the truezen plugin
+        truezen.narrow(first, last)
+
+        -- Optionally, you might want to clear the selection or return to normal mode
+        -- vim.cmd('normal! <Esc>') -- to return to normal mode if needed
+    end, 100) -- Adjust the delay as needed; it might work with less delay
+end, { noremap = true, silent = true })
+
+vim.keymap.set('n', ',,', ":lua require('treesitter-unit').select()<CR>", { noremap = true, silent = true })
+
 
 -- True Zen
 vim.keymap.set('n', '<leader>zz', ':TZAtaraxis<CR>', { noremap = true, silent = true })
