@@ -82,3 +82,11 @@ vim.keymap.set("v", "<leader>zn", ":'<,'>TZNarrow<CR>", { noremap = true, silent
 vim.keymap.set("n", "<leader>zf", ":TZFocus<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>zm", ":TZMinimalist<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>za", ":TZAtaraxis<CR>", { noremap = true, silent = true })
+
+
+-- Window navigation keymaps
+vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { noremap = true, silent = true })
+
