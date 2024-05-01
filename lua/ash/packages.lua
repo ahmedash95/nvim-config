@@ -212,6 +212,7 @@ local plugins = {
         event = "InsertEnter",
         config = true
     },
+    { 'xiyaowong/transparent.nvim' }
 }
 
 require("lazy").setup(plugins, {})
