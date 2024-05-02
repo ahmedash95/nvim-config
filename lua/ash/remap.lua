@@ -18,6 +18,7 @@ vim.keymap.set("n", "<leader>a", ":Telescope commands<CR>")
 
 
 vim.keymap.set("n", "<leader>1", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>2", ":NvimTreeFindFileToggle<CR>")
 
 vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>")
 
@@ -90,3 +91,8 @@ vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { noremap = true, silent = true })
 
+
+
+-- Tests
+vim.keymap.set('n', '<leader>tt', ':lua require("neotest").run.run()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tr', ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>', { noremap = true, silent = true })
