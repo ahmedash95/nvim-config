@@ -52,6 +52,7 @@ vim.keymap.set('n', '<leader>do', ':lua require"dapui".toggle()<CR>', { noremap 
 
 
 -- ZenMode
+vim.keymap.set('v', 'Z', ':TZNarrow<CR>')
 vim.keymap.set('n', 'Z', function()
     -- Trigger treesitter-unit to make the selection
     require "treesitter-unit".select()
