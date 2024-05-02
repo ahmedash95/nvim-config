@@ -212,7 +212,9 @@ local plugins = {
         event = "InsertEnter",
         config = true
     },
-    { 'xiyaowong/transparent.nvim' }
+    { 'xiyaowong/transparent.nvim' },
+    { 'fatih/vim-go' },
+    { 'olexsmir/gopher.nvim' },
 }
 
 require("lazy").setup(plugins, {})

@@ -18,7 +18,7 @@ vim.keymap.set("n", "<leader>a", ":Telescope commands<CR>")
 
 
 vim.keymap.set("n", "<leader>1", ":NvimTreeToggle<CR>")
-vim.keymap.set("n", "<leader>2", ":NvimTreeFindFileToggle<CR>")
+vim.keymap.set("n", "<leader>2", ":NvimTreeFindFile<CR>")
 
 vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>")
 
