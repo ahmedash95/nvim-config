@@ -157,6 +157,12 @@ local plugins = {
     { 'jbyuki/one-small-step-for-vimkind' },
     { "rcarriga/nvim-dap-ui",             dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
     {
+        'leoluz/nvim-dap-go',
+        config = function()
+            require('dap-go').setup()
+        end
+    },
+    {
         "Pocco81/true-zen.nvim",
         config = function()
             require("true-zen").setup({
@@ -215,6 +221,7 @@ local plugins = {
     { 'xiyaowong/transparent.nvim' },
     { 'fatih/vim-go' },
     { 'olexsmir/gopher.nvim' },
+    { 'vim-test/vim-test' },
 }
 
 require("lazy").setup(plugins, {})

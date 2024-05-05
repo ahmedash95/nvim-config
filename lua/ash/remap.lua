@@ -34,6 +34,7 @@ map('n', '<leader>sh', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { desc = "Si
 map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code actions" })
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { desc = "Displays documentation on the cursor" })
 map('n', '<leader>ds', '<cmd>:Telescope lsp_document_symbols<CR>', { desc = "Document symbols" })
+map('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>', { desc = "Show line diagnostics" })
 --
 -- Mapping Cmd+[ and Cmd+] for navigation through the jump list
 map('n', '<leader>[', '<C-o>', { desc = "Navigate to previous cursor position" })
@@ -95,5 +96,11 @@ vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { noremap = true, silent = true })
 
 
 -- Tests
-vim.keymap.set('n', '<leader>tt', ':lua require("neotest").run.run()<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>tr', ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tt', ':TestNearest<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tr', ':TestFile<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ta', ':TestSuite<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tl', ':TestLast<CR>', { noremap = true, silent = true })
+
+-- Debugging
+vim.keymap.set('n', '<leader>dt', ':lua require"dap-go".debug_test()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>dl', ':lua require"dap-go".debug_last_test()<CR>', { noremap = true, silent = true })

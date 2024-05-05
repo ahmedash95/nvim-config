@@ -24,6 +24,10 @@ require('mason-lspconfig').setup({
     ensure_installed = { "phpactor" },
     handlers = {
         function(server_name)
+            -- notifiy server_name
+            if server_name == "phpactor" then
+                return
+            end
             require('lspconfig')[server_name].setup({})
         end,
     },
