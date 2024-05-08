@@ -14,7 +14,13 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>=", ":vertical resize +5<CR>")
 vim.keymap.set("n", "<leader>-", ":vertical resize -5<CR>")
 
+
+-- Telescope
 vim.keymap.set("n", "<leader>a", ":Telescope commands<CR>")
+vim.keymap.set('n', '<leader>pf', ":Telescope find_files<CR>", {})
+vim.keymap.set('n', '<C-p>', ":Telescope git_files<CR>", {})
+vim.keymap.set('n', '<leader>b', ":Telescope buffers<CR>", {})
+vim.keymap.set('n', '<leader>ps', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", {})
 
 
 vim.keymap.set("n", "<leader>1", ":NvimTreeToggle<CR>")
@@ -130,6 +136,6 @@ local function toggle_telescope(harpoon_files)
 end
 
 vim.keymap.set("n", "<leader>.", function() harpoon:list():add() end)
-vim.keymap.set("n", "<leader>e", function() toggle_telescope(harpoon:list()) end)
+vim.keymap.set("n", "<leader>h", function() toggle_telescope(harpoon:list()) end)
 vim.keymap.set("n", "<leader>j", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<leader>k", function() harpoon:list():next() end)

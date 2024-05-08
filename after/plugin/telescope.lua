@@ -10,9 +10,4 @@ require('telescope').setup({
     }
 })
 
-local builtin = require('telescope.builtin')
 
-vim.keymap.set('n', '<leader>pf', ":Telescope find_files<CR>", {})
-vim.keymap.set('n', '<C-p>', ":Telescope git_files<CR>", {})
-vim.keymap.set('n', '<leader>b', ":Telescope buffers<CR>", {})
-vim.keymap.set('n', '<leader>ps', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", {})

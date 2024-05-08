@@ -21,18 +21,9 @@ cmp.setup({
 -- require'lspconfig'.java_language_server.setup{}
 --
 
-local function read_ash_json()
-    local project_root = vim.fn.getcwd()
-    local file = io.open(project_root .. '/.ash.json', 'r')
-    if file == nil then
-        return {}
-    end
-    local content = file:read('*all')
-    file:close()
-    return vim.fn.json_decode(content)
-end
 
-local ash_config = read_ash_json()
+
+local ash_config = require "ash.ash_config".read()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
@@ -53,27 +44,27 @@ require('mason-lspconfig').setup({
 require("typescript-tools").setup {}
 
 -- Lua LSP
-require'lspconfig'.lua_ls.setup {
-  on_init = function(client)
-    local path = client.workspace_folders[1].name
-    if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
-      return
-    end
+require 'lspconfig'.lua_ls.setup {
+    on_init = function(client)
+        local path = client.workspace_folders[1].name
+        if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+            return
+        end
 
-    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-      runtime = {
-        version = 'LuaJIT'
-      },
-      -- Make the server aware of Neovim runtime files
-      workspace = {
-        checkThirdParty = false,
-        library = {
-          vim.env.VIMRUNTIME
-        }
-      }
-    })
-  end,
-  settings = {
-    Lua = {}
-  }
+        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+            runtime = {
+                version = 'LuaJIT'
+            },
+            -- Make the server aware of Neovim runtime files
+            workspace = {
+                checkThirdParty = false,
+                library = {
+                    vim.env.VIMRUNTIME
+                }
+            }
+        })
+    end,
+    settings = {
+        Lua = {}
+    }
 }
