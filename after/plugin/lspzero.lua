@@ -19,13 +19,29 @@ cmp.setup({
 -- here you can setup the language servers
 -- require'lspconfig'.phpactor.setup{}
 -- require'lspconfig'.java_language_server.setup{}
+--
+
+local function read_ash_json()
+    local project_root = vim.fn.getcwd()
+    local file = io.open(project_root .. '/.ash.json', 'r')
+    if file == nil then
+        return {}
+    end
+    local content = file:read('*all')
+    file:close()
+    return vim.fn.json_decode(content)
+end
+
+local ash_config = read_ash_json()
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = { "phpactor" },
     handlers = {
         function(server_name)
-            -- notifiy server_name
-            if server_name == "phpactor" then
+            -- if ash_config has server_name false, then do not setup the server
+            if ash_config[server_name] == false then
+                vim.notify('Server ' .. server_name .. ' is disabled in .ash.json')
                 return
             end
             require('lspconfig')[server_name].setup({})

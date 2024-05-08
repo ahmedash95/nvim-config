@@ -109,3 +109,27 @@ vim.keymap.set('n', '<leader>dl', ':lua require"dap-go".debug_last_test()<CR>', 
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection
 vim.keymap.set('', 'f', ":HopWord<CR>", { noremap = true, silent = true })
+
+-- Harpoon
+local harpoon = require("harpoon")
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
+
+    require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+    }):find()
+end
+
+vim.keymap.set("n", "<leader>.", function() harpoon:list():add() end)
+vim.keymap.set("n", "<leader>e", function() toggle_telescope(harpoon:list()) end)
+vim.keymap.set("n", "<leader>j", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<leader>k", function() harpoon:list():next() end)
