@@ -17,12 +17,6 @@ cmp.setup({
 })
 
 -- here you can setup the language servers
--- require'lspconfig'.phpactor.setup{}
--- require'lspconfig'.java_language_server.setup{}
---
-
-
-
 local ash_config = require "ash.ash_config".read()
 
 require('mason').setup({})
@@ -35,7 +29,19 @@ require('mason-lspconfig').setup({
                 vim.notify('Server ' .. server_name .. ' is disabled in .ash.json')
                 return
             end
-            require('lspconfig')[server_name].setup({})
+
+            if server_name == 'phpactor' then
+                local masonCSFixerPath = vim.fn.stdpath('data') .. '/mason/packages/php-cs-fixer/php-cs-fixer.phar'
+                require('lspconfig')[server_name].setup({
+                    init_options = {
+                        ["language_server_php_cs_fixer.enabled"] = true,
+                        ["language_server_php_cs_fixer.bin"] = masonCSFixerPath,
+                    },
+                })
+                return
+            else
+                require('lspconfig')[server_name].setup({})
+            end
         end,
     },
 })
