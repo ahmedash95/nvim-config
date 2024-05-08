@@ -7,5 +7,5 @@ vim.opt.softtabstop = 4     -- Set the number of spaces tabs count for in insert
 vim.opt.shiftwidth = 4      -- Set the number of spaces to use for each step of (auto)indent
 vim.opt.expandtab = true    -- Use spaces instead of tabs
 
-require("ash.remap");
 require("ash.packages");
+require("ash.remap");

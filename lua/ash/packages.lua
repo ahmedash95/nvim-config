@@ -208,12 +208,6 @@ local plugins = {
         },
     },
     {
-        'ggandor/leap.nvim',
-        config = function()
-            require('leap').create_default_mappings()
-        end
-    },
-    {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
         config = true
@@ -222,6 +216,14 @@ local plugins = {
     { 'fatih/vim-go' },
     { 'olexsmir/gopher.nvim' },
     { 'vim-test/vim-test' },
+    {
+        'phaazon/hop.nvim',
+        config = function()
+            require "hop".setup()
+        end
+
+    },
+
 }
 
 require("lazy").setup(plugins, {})

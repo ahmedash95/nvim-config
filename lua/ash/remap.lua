@@ -104,3 +104,8 @@ vim.keymap.set('n', '<leader>tl', ':TestLast<CR>', { noremap = true, silent = tr
 -- Debugging
 vim.keymap.set('n', '<leader>dt', ':lua require"dap-go".debug_test()<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>dl', ':lua require"dap-go".debug_last_test()<CR>', { noremap = true, silent = true })
+
+--hop
+local hop = require('hop')
+local directions = require('hop.hint').HintDirection
+vim.keymap.set('', 'f', ":HopWord<CR>", { noremap = true, silent = true })
