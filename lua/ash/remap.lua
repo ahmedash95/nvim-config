@@ -19,10 +19,16 @@ vim.keymap.set("n", "<leader>-", ":vertical resize -5<CR>")
 
 -- Telescope
 vim.keymap.set("n", "<leader>a", ":Telescope commands<CR>")
-vim.keymap.set('n', '<leader>pf', ":Telescope find_files<CR>", {})
-vim.keymap.set('n', '<C-p>', ":Telescope git_files<CR>", {})
+vim.keymap.set('n', '<leader>pf', function()
+    require "ash.tpicker".prettyFilesPicker({ picker = 'find_files' })
+end)
+vim.keymap.set('n', '<C-p>', function()
+    require "ash.tpicker".prettyFilesPicker({ picker = 'git_files' })
+end)
 vim.keymap.set('n', '<leader>b', ":Telescope buffers<CR>", {})
-vim.keymap.set('n', '<leader>ps', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", {})
+vim.keymap.set('n', '<leader>ps', function()
+    require "ash.tpicker".prettyGrepPicker({ picker = 'live_grep' })
+end)
 
 
 vim.keymap.set("n", "<leader>1", ":NvimTreeToggle<CR>")

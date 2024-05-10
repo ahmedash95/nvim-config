@@ -9,6 +9,5 @@ vim.opt.expandtab = true    -- Use spaces instead of tabs
 
 require("ash.packages");
 require("ash.remap");
-
-
 require("ash.ash_lsp")
+
