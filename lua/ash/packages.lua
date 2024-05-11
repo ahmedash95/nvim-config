@@ -230,7 +230,16 @@ local plugins = {
         config = function()
             require("harpoon").setup()
         end
-    }
+    },
+    {
+        'rmagatti/auto-session',
+        config = function()
+            require("auto-session").setup {
+                log_level = "error",
+                auto_session_suppress_dirs = { "~/code", "~/go/", "~/.config" },
+            }
+        end
+    },
 }
 
 require("lazy").setup(plugins, {})
