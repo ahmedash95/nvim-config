@@ -145,3 +145,6 @@ vim.keymap.set("n", "<leader>.", function() harpoon:list():add() end)
 vim.keymap.set("n", "<leader>h", function() toggle_telescope(harpoon:list()) end)
 vim.keymap.set("n", "<leader>j", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<leader>k", function() harpoon:list():next() end)
+
+
+vim.keymap.set('n', '<leader>g', ':LazyGit<CR>', { noremap = true, silent = true })

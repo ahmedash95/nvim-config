@@ -240,6 +240,7 @@ local plugins = {
             }
         end
     },
+    { 'kdheepak/lazygit.nvim' },
 }
 
 require("lazy").setup(plugins, {})
