@@ -89,8 +89,6 @@ vim.keymap.set('n', 'Z', function()
     end, 100) -- Adjust the delay as needed; it might work with less delay
 end, { noremap = true, silent = true })
 
-vim.keymap.set('n', ',,', ":lua require('treesitter-unit').select()<CR>", { noremap = true, silent = true })
-
 
 -- True Zen
 vim.keymap.set('n', '<leader>zz', ':TZAtaraxis<CR>', { noremap = true, silent = true })
