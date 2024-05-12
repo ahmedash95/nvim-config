@@ -25,7 +25,9 @@ require('mason-lspconfig').setup({
     handlers = {
         function(server_name)
             -- if ash_config has server_name false, then do not setup the server
-            if ash_config[server_name] == false then
+            local key = server_name .. '.enable'
+            local is_disabled = ash_config[key] == false
+            if is_disabled then
                 vim.notify('Server ' .. server_name .. ' is disabled in .ash.json')
                 return
             end

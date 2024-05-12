@@ -42,7 +42,7 @@ vim.keymap.set("n", "<C-o>", ":lua require(\"deepsymbols\").get_symbols()<CR>")
 -- phpactor
 map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = "Rename" })
 map('n', '<leader>fd', '<cmd>lua vim.lsp.buf.definition()<CR>', { desc = "Go to definition" })
-map('n', '<leader>us', ':lua require(\'telescope.builtin\').lsp_references()<CR>', { desc = "Find usages" })
+map('n', '<leader>us', ':Telescope lsp_references show_line=false<CR>', { desc = "Find usages" })
 map('n', '<leader>im', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = "Go to implementation" })
 map('n', '<leader>sh', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { desc = "Signature help" })
 map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code actions" })
@@ -118,8 +118,6 @@ vim.keymap.set('n', '<leader>dt', ':lua require"dap-go".debug_test()<CR>', { nor
 vim.keymap.set('n', '<leader>dl', ':lua require"dap-go".debug_last_test()<CR>', { noremap = true, silent = true })
 
 --hop
-local hop = require('hop')
-local directions = require('hop.hint').HintDirection
 vim.keymap.set('', 'f', ":HopWord<CR>", { noremap = true, silent = true })
 
 -- Harpoon
