@@ -8,6 +8,9 @@ end
 
 vim.g.mapleader = " "
 
+vim.keymap.set('n', 'sp', ':sp<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'vsp', ':vsp<CR>', { noremap = true, silent = true })
+
 vim.keymap.set('n', ';;', ':LspRestart<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('v', '<leader>c', '"+y', { noremap = true, silent = true }) -- copy text to clipboard
