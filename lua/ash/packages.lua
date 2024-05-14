@@ -241,6 +241,13 @@ local plugins = {
         end
     },
     { 'kdheepak/lazygit.nvim' },
+    {
+        'tpope/vim-dadbod',
+        dependencies = {
+            'kristijanhusak/vim-dadbod-ui',
+            'kristijanhusak/vim-dadbod-completion'
+        },
+    },
 }
 
 require("lazy").setup(plugins, {})
