@@ -16,8 +16,8 @@ vim.keymap.set('n', ';;', ':LspRestart<CR>', { noremap = true, silent = true })
 vim.keymap.set('v', '<leader>c', '"+y', { noremap = true, silent = true }) -- copy text to clipboard
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>=", ":vertical resize +5<CR>")
-vim.keymap.set("n", "<leader>-", ":vertical resize -5<CR>")
+vim.keymap.set("n", "<leader>=", ":vertical resize +5<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>-", ":vertical resize -5<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "tn", ":tabnew<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "tr", ":tabnext<CR>", { noremap = true, silent = true })
