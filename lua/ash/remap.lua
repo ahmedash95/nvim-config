@@ -19,6 +19,11 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>=", ":vertical resize +5<CR>")
 vim.keymap.set("n", "<leader>-", ":vertical resize -5<CR>")
 
+vim.keymap.set("n", "tn", ":tabnew<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "tr", ":tabnext<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "tl", ":tabprevious<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "tq", ":tabclose<CR>", { noremap = true, silent = true })
+
 
 -- Telescope
 vim.keymap.set("n", "<leader>a", ":Telescope commands<CR>")
