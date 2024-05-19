@@ -39,10 +39,8 @@ vim.keymap.set('n', '<leader>ps', function()
 end)
 
 
-vim.keymap.set("n", "<leader>1", ":NvimTreeToggle<CR>")
-vim.keymap.set("n", "<leader>2", ":NvimTreeFindFile<CR>")
-
-vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>")
+vim.keymap.set("n", "<leader>1", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>2", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<C-o>", ":lua require(\"deepsymbols\").get_symbols()<CR>")
 
