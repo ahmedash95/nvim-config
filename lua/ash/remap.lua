@@ -124,7 +124,7 @@ vim.keymap.set('n', '<leader>dt', ':lua require"dap-go".debug_test()<CR>', { nor
 vim.keymap.set('n', '<leader>dl', ':lua require"dap-go".debug_last_test()<CR>', { noremap = true, silent = true })
 
 --hop
-vim.keymap.set('', 'f', ":HopWord<CR>", { noremap = true, silent = true })
+vim.keymap.set('', 's', ":HopWord<CR>", { noremap = true, silent = true })
 
 -- Harpoon
 local harpoon = require("harpoon")
