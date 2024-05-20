@@ -8,8 +8,6 @@ vim.opt.shiftwidth = 4      -- Set the number of spaces to use for each step of 
 vim.opt.expandtab = true    -- Use spaces instead of tabs
 vim.opt.scrolloff = 4       -- Keep 4 lines above and below the cursor when scrolling
 vim.cmd([[ set nofoldenable]]) -- Disable folding
-vim.o.statuscolumn = "%C%s%l  " -- set more space between the text and the line number
-
 
 require("ash.packages");
 require("ash.remap");
