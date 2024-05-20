@@ -100,26 +100,6 @@ local plugins = {
     },
 
     {
-        'adalessa/laravel.nvim',
-        dependencies = { -- Declare dependencies using 'dependencies' in packer
-            'nvim-telescope/telescope.nvim',
-            'tpope/vim-dotenv',
-            'MunifTanjim/nui.nvim',
-            'nvimtools/none-ls.nvim'
-        },
-        build = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" }, -- Load plugin on these commands
-        keys = {                                                             -- Map keys only after the plugin is loaded
-            { "n", "<leader>la", ":Laravel artisan<cr>" },
-            { "n", "<leader>lr", ":Laravel routes<cr>" },
-            { "n", "<leader>lm", ":Laravel related<cr>" },
-        },
-        init = function()
-            -- Assuming there's a setup or configuration function available within the plugin
-            require('laravel').setup()
-        end
-    },
-
-    {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     },
