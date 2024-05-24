@@ -214,6 +214,7 @@ local plugins = {
             require("auto-session").setup {
                 log_level = "error",
                 auto_session_suppress_dirs = { "~/code", "~/go/", "~/.config" },
+                pre_save_cmds = { "NvimTreeClose" },
             }
         end
     },
