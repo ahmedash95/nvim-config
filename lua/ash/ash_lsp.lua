@@ -29,5 +29,5 @@ if file_exists(lspPath) then
         }
     }
 
-    lspconfig.lsp_ash.setup {}
+    -- lspconfig.lsp_ash.setup {}
 end
