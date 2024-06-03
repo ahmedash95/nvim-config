@@ -29,14 +29,14 @@ vim.keymap.set("n", "tq", ":tabclose<CR>", { noremap = true, silent = true })
 -- Telescope
 vim.keymap.set("n", "<leader>a", ":Telescope commands<CR>", { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>pf', ":Telescope find_files<CR>", { noremap = true, silent = true })
-vim.keymap.set('n', '<C-p>', ":Telescope git_files<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<leader><leader>', ":Telescope git_files<CR>", { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>b', ":Telescope buffers<CR>", {})
 vim.keymap.set('n', '<leader>ps', ":Telescope live_grep<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>1", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>2", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<C-o>", ":lua require(\"deepsymbols\").get_symbols()<CR>")
+vim.keymap.set("n", "<leader>o", ":lua require(\"deepsymbols\").get_symbols()<CR>")
 
 
 -- phpactor
