@@ -7,7 +7,7 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 local cmp = require('cmp')
-local luasnip = require'luasnip'
+local luasnip = require 'luasnip'
 
 cmp.setup({
     completion = {
@@ -21,9 +21,8 @@ cmp.setup({
     }
 })
 
--- here you can setup the language servers
+local disabled = {} -- example: {["phpactor"] = false}
 local ash_config = require "ash.ash_config".read()
-
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = { "phpactor" },
@@ -32,7 +31,7 @@ require('mason-lspconfig').setup({
             -- if ash_config has server_name false, then do not setup the server
             local key = server_name .. '.enable'
             local is_disabled = ash_config[key] == false
-            if is_disabled then
+            if is_disabled or disabled[server_name] then
                 vim.notify('Server ' .. server_name .. ' is disabled in .ash.json')
                 return
             end
@@ -81,3 +80,19 @@ require 'lspconfig'.lua_ls.setup {
         Lua = {}
     }
 }
+
+-- intelephense
+local get_intelephense_license = function()
+    local f = assert(io.open(os.getenv("HOME") .. "/intelephense/key.txt", "rb"))
+
+    local content = f:read("*a")
+
+    f:close()
+
+    return string.gsub(content, "%s+", "")
+end
+lsp_zero.configure("intelephense", {
+    init_options = {
+        licenceKey = get_intelephense_license()
+    }
+})
