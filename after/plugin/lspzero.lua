@@ -80,19 +80,3 @@ require 'lspconfig'.lua_ls.setup {
         Lua = {}
     }
 }
-
--- intelephense
-local get_intelephense_license = function()
-    local f = assert(io.open(os.getenv("HOME") .. "/intelephense/key.txt", "rb"))
-
-    local content = f:read("*a")
-
-    f:close()
-
-    return string.gsub(content, "%s+", "")
-end
-lsp_zero.configure("intelephense", {
-    init_options = {
-        licenceKey = get_intelephense_license()
-    }
-})
