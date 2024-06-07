@@ -9,6 +9,12 @@ cmp.setup({
     },
     mapping = {
         ['<cr>'] = cmp.mapping.confirm({ select = false }),
+        ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({
+            behavior = cmp.SelectBehavior.Select
+        }), { 'i', 'c' }),
+        ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
+            behavior = cmp.SelectBehavior.Select
+        }), { 'i', 'c' }),
     }
 })
 
