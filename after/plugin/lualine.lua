@@ -21,8 +21,8 @@ require('lualine').setup {
     options = {
         icons_enabled = true,
         theme = 'auto',
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        component_separators = { left = '', right = '' }, -- Slanted separators for components
+        section_separators = { left = '', right = '' }, -- Slanted separators for sections
         disabled_filetypes = {
             statusline = {},
             winbar = {},
@@ -42,17 +42,49 @@ require('lualine').setup {
         lualine_c = { get_relative_file_path },
         lualine_x = { 'encoding', 'filetype' },
         lualine_y = {},
-        lualine_z = {'location'}
+        lualine_z = { 'location' }
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
         lualine_c = { get_relative_file_path },
-        lualine_x = {'filetype'},
+        lualine_x = { 'filetype' },
         lualine_y = {},
         lualine_z = {}
     },
-    tabline = {},
+    tabline = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {
+            {
+                'tabs',
+                mode = 1,                          -- 0: just tab nr, 1: tab nr + name, 2: tab nr + name + extra info
+                tabs_color = {
+                    active = 'lualine_a_normal',   -- Color for active tab.
+                    inactive = 'lualine_b_normal', -- Color for inactive tab.
+                },
+                fmt = function(name, context)
+                    -- Show filename with extension and icon, hide tab number
+                    local icon = require 'nvim-web-devicons'.get_icon(name, vim.fn.fnamemodify(name, ':e'),
+                        { default = true })
+                    return icon .. ' ' .. name
+                end,
+            },
+            {
+                function()
+                    vim.o.showtabline = 1
+                    return ''
+                    -- https://github.com/nvim-lualine/lualine.nvim/pull/1013#issuecomment-1558099544
+                    --HACK: lualine will set &showtabline to 2 if you have configured
+                    --lualine for displaying tabline. We want to restore the default
+                    --behavior here.
+                end,
+            },
+        },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {}
+    },
     winbar = {},
     inactive_winbar = {},
     extensions = {}
