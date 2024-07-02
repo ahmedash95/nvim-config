@@ -54,8 +54,7 @@ require('lualine').setup {
     },
     tabline = {
         lualine_a = {},
-        lualine_b = {},
-        lualine_c = {
+        lualine_b = {
             {
                 'tabs',
                 mode = 1,                          -- 0: just tab nr, 1: tab nr + name, 2: tab nr + name + extra info
@@ -81,6 +80,7 @@ require('lualine').setup {
                 end,
             },
         },
+        lualine_c = {},
         lualine_x = {},
         lualine_y = {},
         lualine_z = {}
