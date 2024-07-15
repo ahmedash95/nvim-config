@@ -22,7 +22,7 @@ local disabled = {} -- example: {["phpactor"] = false}
 local ash_config = require "ash.ash_config".read()
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { "phpactor" },
+    ensure_installed = {},
     handlers = {
         function(server_name)
             -- if ash_config has server_name false, then do not setup the server
