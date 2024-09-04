@@ -5,7 +5,7 @@ require("nvim-tree").setup({
     view = {
         width = 40,
         adaptive_size = false,
-        auto_resize = false,
+        -- auto_resize = false,
     },
     renderer = {
         group_empty = true,
