@@ -266,7 +266,7 @@ local plugins = {
             "MunifTanjim/nui.nvim",
             --- The below dependencies are optional,
             "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-            "zbirenbaum/copilot.lua", -- for providers='copilot'
+            "zbirenbaum/copilot.lua",      -- for providers='copilot'
             {
                 -- support for image pasting
                 "HakonHarnes/img-clip.nvim",
@@ -293,7 +293,11 @@ local plugins = {
                 ft = { "markdown", "Avante" },
             },
         },
-    }
+    },
+    {
+        'ta-tikoma/php.easy.nvim',
+        config = true,
+    },
 }
 
 require("lazy").setup(plugins, {})

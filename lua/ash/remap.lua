@@ -14,10 +14,10 @@ vim.keymap.set('n', 'vsp', ':vsp<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', ';;', ':LspRestart<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('v', '<leader>c', '"+y', { noremap = true, silent = true }) -- copy text to clipboard
-vim.keymap.set('n', '\\', ':noh<CR>', { noremap = true, silent = true }) -- remove highlighted words from search
-vim.keymap.set('n', '\\', function ()
+vim.keymap.set('n', '\\', ':noh<CR>', { noremap = true, silent = true })   -- remove highlighted words from search
+vim.keymap.set('n', '\\', function()
     vim.cmd("noh")
-    require"notify".dismiss()
+    require "notify".dismiss()
 end, { noremap = true, silent = true }) -- remove highlighted words from search and dismiss notification
 
 
@@ -151,3 +151,28 @@ vim.keymap.set("n", "<leader>k", function() harpoon:list():next() end)
 
 
 vim.keymap.set('n', '<leader>g', ':LazyGit<CR>', { noremap = true, silent = true })
+
+
+-- easy php
+vim.api.nvim_set_keymap('n', '-#', '<CMD>PHPEasyAttribute<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '-b', '<CMD>PHPEasyDocBlock<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '-r', '<CMD>PHPEasyReplica<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '-c', '<CMD>PHPEasyCopy<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '-d', '<CMD>PHPEasyDelete<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '-uu', '<CMD>PHPEasyRemoveUnusedUses<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '-e', '<CMD>PHPEasyExtends<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '-i', '<CMD>PHPEasyImplements<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '--i', '<CMD>PHPEasyInitInterface<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '--c', '<CMD>PHPEasyInitClass<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '--ac', '<CMD>PHPEasyInitAbstractClass<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '--t', '<CMD>PHPEasyInitTrait<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '--e', '<CMD>PHPEasyInitEnum<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '-c', '<CMD>PHPEasyAppendConstant<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '-c', '<CMD>PHPEasyAppendConstant<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '-p', '<CMD>PHPEasyAppendProperty<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '-p', '<CMD>PHPEasyAppendProperty<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '-m', '<CMD>PHPEasyAppendMethod<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '-m', '<CMD>PHPEasyAppendMethod<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '__', '<CMD>PHPEasyAppendConstruct<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '_i', '<CMD>PHPEasyAppendInvoke<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '-a', '<CMD>PHPEasyAppendArgument<CR>', { noremap = true, silent = true })
