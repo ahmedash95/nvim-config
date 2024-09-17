@@ -17,11 +17,13 @@ local function get_relative_file_path()
     return vim.fn.fnamemodify(file_path, ':~:.')
 end
 
+local navic = require("nvim-navic")
+
 require('lualine').setup {
     options = {
         icons_enabled = true,
         theme = 'auto',
-        component_separators = { left = '', right = '' }, -- Slanted separators for components
+        -- component_separators = { left = '', right = '' }, -- Slanted separators for components
         section_separators = { left = '', right = '' }, -- Slanted separators for sections
         disabled_filetypes = {
             statusline = {},
@@ -53,8 +55,7 @@ require('lualine').setup {
         lualine_z = {}
     },
     tabline = {
-        lualine_a = {},
-        lualine_b = {
+        lualine_a = {
             {
                 'tabs',
                 mode = 1,                          -- 0: just tab nr, 1: tab nr + name, 2: tab nr + name + extra info
@@ -69,16 +70,9 @@ require('lualine').setup {
                     return icon .. ' ' .. name
                 end,
             },
-            {
-                function()
-                    vim.o.showtabline = 1
-                    return ''
-                    -- https://github.com/nvim-lualine/lualine.nvim/pull/1013#issuecomment-1558099544
-                    --HACK: lualine will set &showtabline to 2 if you have configured
-                    --lualine for displaying tabline. We want to restore the default
-                    --behavior here.
-                end,
-            },
+            'navic',
+        },
+        lualine_b = {
         },
         lualine_c = {},
         lualine_x = {},
