@@ -20,15 +20,6 @@ cmp.setup({
 
 local disabled = {} -- example: {["phpactor"] = false}
 local ash_config = require "ash.ash_config".read()
-local navic = require("nvim-navic")
-
-local on_attach = function(client, bufnr)
-    if client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, bufnr)
-    end
-end
-
-
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = {},
@@ -49,13 +40,10 @@ require('mason-lspconfig').setup({
                         ["language_server_php_cs_fixer.enabled"] = true,
                         ["language_server_php_cs_fixer.bin"] = masonCSFixerPath,
                     },
-                    on_attach = on_attach
                 })
                 return
             else
-                require('lspconfig')[server_name].setup({
-                    on_attach = on_attach
-                })
+                require('lspconfig')[server_name].setup({})
             end
         end,
     },
