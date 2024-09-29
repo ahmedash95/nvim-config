@@ -34,7 +34,15 @@ vim.keymap.set("n", "tq", ":tabclose<CR>", { noremap = true, silent = true })
 -- Telescope
 vim.keymap.set("n", "<leader>a", ":Telescope commands<CR>", { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>pf', ":Telescope find_files<CR>", { noremap = true, silent = true })
-vim.keymap.set('n', '<leader><leader>', ":Telescope git_files<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<leader><leader>', function ()
+    -- if .git folder exists in root project, use the default :Telescope find_files otherwise use git_files
+    local git_dir = vim.fn.isdirectory(vim.fn.getcwd() .. "/.git")
+    if git_dir == 1 then
+        require("telescope.builtin").git_files()
+    else
+        require("telescope.builtin").find_files()
+    end
+end, { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>b', ":Telescope buffers<CR>", {})
 vim.keymap.set('n', '<leader>ps', ":Telescope live_grep<CR>", { noremap = true, silent = true })
 
