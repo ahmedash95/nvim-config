@@ -1,4 +1,5 @@
 local cmp = require('cmp')
+local lspkind = require('lspkind')
 
 cmp.setup({
     completion = {
@@ -15,8 +16,17 @@ cmp.setup({
         ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
             behavior = cmp.SelectBehavior.Select
         }), { 'i', 'c' }),
+    },
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = 'symbol',
+            maxwidth = 50, 
+            ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+            show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+        })
     }
 })
+
 
 local disabled = {} -- example: {["phpactor"] = false}
 local ash_config = require "ash.ash_config".read()

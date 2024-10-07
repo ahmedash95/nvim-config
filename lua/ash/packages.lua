@@ -43,11 +43,11 @@ local plugins = {
             'MunifTanjim/nui.nvim',
             'nvim-treesitter/nvim-treesitter',
             'rcarriga/nvim-notify',
-            'nvim-tree/nvim-web-devicons'
+            -- 'nvim-tree/nvim-web-devicons'
         },
         run = ":TSUpdate html"
     },
-    'nvim-tree/nvim-web-devicons',
+    -- 'nvim-tree/nvim-web-devicons',
 
     'terryma/vim-multiple-cursors',
 
@@ -265,8 +265,9 @@ local plugins = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             --- The below dependencies are optional,
-            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-            "zbirenbaum/copilot.lua",      -- for providers='copilot'
+            -- "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+            "echasnovski/mini.icons", -- or echasnovski/mini.icons
+            "zbirenbaum/copilot.lua", -- for providers='copilot'
             {
                 -- support for image pasting
                 "HakonHarnes/img-clip.nvim",
@@ -297,6 +298,27 @@ local plugins = {
     {
         'ta-tikoma/php.easy.nvim',
         config = true,
+    },
+    {
+        'onsails/lspkind.nvim',
+        init = function ()
+            require('lspkind').setup()
+        end
+    },
+    {
+        "echasnovski/mini.icons",
+        opts = {},
+        lazy = true,
+        specs = {
+            { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+        },
+        init = function()
+            package.preload["nvim-web-devicons"] = function()
+                require("mini.icons").mock_nvim_web_devicons()
+                return package.loaded["nvim-web-devicons"]
+            end
+            require('mini.icons').setup()
+        end,
     },
 }
 
