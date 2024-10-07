@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 local function map(mode, lhs, rhs, opts)
     local options = { noremap = true, silent = true }
     if opts then
@@ -6,7 +8,8 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-vim.g.mapleader = " "
+-- ash plugins --
+vim.keymap.set('n', '<leader>wr', ':CopyReference<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', 'sp', ':sp<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', 'vsp', ':vsp<CR>', { noremap = true, silent = true })
@@ -34,7 +37,7 @@ vim.keymap.set("n", "tq", ":tabclose<CR>", { noremap = true, silent = true })
 -- Telescope
 vim.keymap.set("n", "<leader>a", ":Telescope commands<CR>", { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>pf', ":Telescope find_files<CR>", { noremap = true, silent = true })
-vim.keymap.set('n', '<leader><leader>', function ()
+vim.keymap.set('n', '<leader><leader>', function()
     -- if .git folder exists in root project, use the default :Telescope find_files otherwise use git_files
     local git_dir = vim.fn.isdirectory(vim.fn.getcwd() .. "/.git")
     if git_dir == 1 then

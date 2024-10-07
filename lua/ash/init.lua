@@ -20,3 +20,4 @@ require("ash.packages");
 require("ash.remap");
 require("ash.ash_lsp")
 require("ash.tinker")
+require("ash.copyreference")
