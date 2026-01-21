@@ -51,6 +51,7 @@ vim.keymap.set('n', '<leader>ps', ":Telescope live_grep<CR>", { noremap = true, 
 
 vim.keymap.set("n", "<leader>1", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>2", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>3", ":ToggleTerm<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>o", ":lua require(\"deepsymbols\").get_symbols()<CR>")
 

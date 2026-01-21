@@ -17,7 +17,7 @@ vim.filetype.add({
 
 require 'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all" (the five listed parsers should always be installed)
-    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "java", "php", "blade" },
+    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "java", "php", "blade", "regex", "go" },
 
     sync_install = false,
 
@@ -32,6 +32,8 @@ require 'nvim-treesitter.configs'.setup {
 
         additional_vim_regex_highlighting = false,
     },
+
+    ignore_install = { "regex" },
 
     incremental_selection = {
         enable = true,
