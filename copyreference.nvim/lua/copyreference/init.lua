@@ -1,4 +1,4 @@
-local vim = vim
+local M = {}
 
 --- Creates a floating window with dynamic sizing based on content
 --- @param lines table Array of strings to display in the window
@@ -144,8 +144,8 @@ local function setup_keymaps(buf, win, namespace, rel_path, abs_path)
     }))
 end
 
---- Main command to show the floating window with file reference options
-vim.api.nvim_create_user_command("CopyReference", function()
+--- Main function to show the floating window with file reference options
+function M.show_reference()
     -- Retrieve file details with validation
     local filename = vim.api.nvim_buf_get_name(0)
     if not filename or filename == "" then
@@ -173,4 +173,19 @@ vim.api.nvim_create_user_command("CopyReference", function()
 
     -- Setup key mappings
     setup_keymaps(buf, win, namespace, rel_path, abs_path)
-end, {})
+end
+
+--- Setup function for the plugin
+--- @param opts table Optional configuration table
+function M.setup(opts)
+    local config = require("copyreference.config")
+    local commands = require("copyreference.commands")
+
+    -- Merge user configuration with defaults
+    local merged_config = config.merge_config(opts)
+
+    -- Create the user command
+    commands.create_command()
+end
+
+return M
