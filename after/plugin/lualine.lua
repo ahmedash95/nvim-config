@@ -1,7 +1,7 @@
 -- Function to get the project root
 local function get_project_root()
     -- Try to get the root from LSP client
-    local clients = vim.lsp.buf_get_clients()
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
     if next(clients) ~= nil then
         return clients[1].config.root_dir
     end

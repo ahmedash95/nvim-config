@@ -33,8 +33,6 @@ require 'nvim-treesitter.configs'.setup {
         additional_vim_regex_highlighting = false,
     },
 
-    ignore_install = { "regex" },
-
     incremental_selection = {
         enable = true,
         keymaps = {
