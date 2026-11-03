@@ -130,11 +130,6 @@ local plugins = {
     },
 
     {
-        "pmizio/typescript-tools.nvim",
-        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    },
-
-    {
         "nvim-telescope/telescope-live-grep-args.nvim",
         init = function()
             require("telescope").load_extension("live_grep_args")

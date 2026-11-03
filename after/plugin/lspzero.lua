@@ -48,10 +48,9 @@ end
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = {},
+    ensure_installed = { "vtsls" },
     automatic_enable = {
         exclude = ash_disabled_servers(),
     },
 })
 
-require("typescript-tools").setup {}
