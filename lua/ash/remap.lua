@@ -162,7 +162,7 @@ vim.keymap.set("n", "<leader>j", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<leader>k", function() harpoon:list():next() end)
 
 
-vim.keymap.set('n', '<leader>g', ':LazyGit<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>g', function() require('ash.rex').lazygit() end, { noremap = true, silent = true, desc = 'LazyGit (Rex float)' })
 
 
 -- easy php
