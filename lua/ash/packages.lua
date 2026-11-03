@@ -50,6 +50,7 @@ local plugins = {
     },
     {
         'nvim-treesitter/nvim-treesitter',
+        branch = 'master',
         build = ':TSUpdate'
     },
     {
@@ -219,7 +220,7 @@ local plugins = {
     { 'olexsmir/gopher.nvim' },
     { 'vim-test/vim-test' },
     {
-        'phaazon/hop.nvim',
+        'smoka7/hop.nvim',
         config = function()
             require "hop".setup()
         end
@@ -298,36 +299,6 @@ local plugins = {
             end
             require('mini.icons').setup()
         end,
-    },
-    {
-        "yetone/avante.nvim",
-        event = "VeryLazy",
-        keys = {
-            {
-                "<leader>a+",
-                function()
-                    local tree_ext = require("avante.extensions.nvim_tree")
-                    tree_ext.add_file()
-                end,
-                desc = "Select file in NvimTree",
-                ft = "NvimTree",
-            },
-            {
-                "<leader>a-",
-                function()
-                    local tree_ext = require("avante.extensions.nvim_tree")
-                    tree_ext.remove_file()
-                end,
-                desc = "Deselect file in NvimTree",
-                ft = "NvimTree",
-            },
-        },
-        opts = {
-            --- other configurations
-            selector = {
-                exclude_auto_select = { "NvimTree" },
-            },
-        },
     }
 }
 
