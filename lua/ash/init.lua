@@ -10,6 +10,7 @@ vim.opt.scrolloff = 4                           -- Keep 4 lines above and below 
 vim.opt.linespace = 40
 vim.opt.ignorecase = true                       -- search case insensitive
 vim.opt.smartcase = true                        -- search matters if capital letter
+vim.opt.winborder = 'rounded'                   -- Border on all floats (hover, which-key, cmp) so they read well when transparent
 vim.opt.inccommand = "split"                    -- show preview when search&replace
 
 vim.cmd([[ set nofoldenable]])                  -- Disable folding

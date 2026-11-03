@@ -17,10 +17,29 @@ local function get_relative_file_path()
     return vim.fn.fnamemodify(file_path, ':~:.')
 end
 
+-- Derive the theme from the colorscheme, and when transparent.nvim is on,
+-- drop the background of the inner sections so the statusline shows the
+-- terminal through. The mode pill (sections a/z) keeps its colour.
+-- Lualine re-evaluates this on every ColorScheme, which :TransparentToggle triggers.
+local function statusline_theme()
+    local theme = require('lualine.utils.loader').load_theme('auto')
+    if not vim.g.transparent_enabled then
+        return theme
+    end
+    for _, mode in pairs(theme) do
+        for section, colors in pairs(mode) do
+            if section ~= 'a' then
+                colors.bg = 'None'
+            end
+        end
+    end
+    return theme
+end
+
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        theme = 'auto',
+        theme = statusline_theme,
         component_separators = { left = '', right = '' }, -- Slanted separators for components
         section_separators = { left = '', right = '' }, -- Slanted separators for sections
         disabled_filetypes = {

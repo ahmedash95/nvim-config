@@ -215,7 +215,33 @@ local plugins = {
         event = "InsertEnter",
         config = true
     },
-    { 'xiyaowong/transparent.nvim' },
+    {
+        'xiyaowong/transparent.nvim',
+        opts = {
+            -- Floats (hover, which-key, lazy, noice, cmp) and Telescope panes,
+            -- borders and titles. Selection / match / diff groups are left
+            -- alone so the current item stays highlighted.
+            extra_groups = {
+                'NormalFloat', 'FloatBorder', 'FloatTitle', 'FloatFooter',
+                'Pmenu', 'PmenuExtra', 'PmenuKind', 'PmenuMatch', 'PmenuBorder',
+                'WhichKeyNormal', 'CmpDocumentation', 'CmpDocumentationBorder', 'LspInfoBorder',
+                'TelescopeNormal', 'TelescopeBorder', 'TelescopeTitle',
+                'TelescopePromptNormal', 'TelescopePromptBorder', 'TelescopePromptTitle',
+                'TelescopeResultsNormal', 'TelescopeResultsBorder', 'TelescopeResultsTitle',
+                'TelescopePreviewNormal', 'TelescopePreviewBorder', 'TelescopePreviewTitle',
+                'TelescopePreviewMessage', 'TelescopePreviewMessageFillchar',
+            },
+            -- Some themes (github_light) link TelescopeSelection to CursorLine,
+            -- which transparent.nvim clears; fall back to Visual so the
+            -- selected row stays visible.
+            on_clear = function()
+                local sel = vim.api.nvim_get_hl(0, { name = 'TelescopeSelection', link = false })
+                if not sel.bg then
+                    vim.api.nvim_set_hl(0, 'TelescopeSelection', { link = 'Visual' })
+                end
+            end,
+        },
+    },
     { 'fatih/vim-go' },
     { 'olexsmir/gopher.nvim' },
     { 'vim-test/vim-test' },
