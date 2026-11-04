@@ -1,12 +1,8 @@
-vim.g.leetcode = {
-    language = "java"
-}
 require("leetcode").setup({
-   defaults = {
-      language = 'java'
-   }
+    lang = "java",
+    image_support = true,
 })
 
-require("notify").setup({ 
- background_colour = "#000000",
+require("notify").setup({
+    background_colour = "#000000",
 })

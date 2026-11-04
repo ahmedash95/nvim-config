@@ -74,11 +74,25 @@ local plugins = {
             'MunifTanjim/nui.nvim',
             'nvim-treesitter/nvim-treesitter',
             'rcarriga/nvim-notify',
+            '3rd/image.nvim',
             -- 'nvim-tree/nvim-web-devicons'
         },
-        run = ":TSUpdate html"
+        build = ":TSUpdate html"
     },
     -- 'nvim-tree/nvim-web-devicons',
+
+    {
+        '3rd/image.nvim',
+        -- rockspec pulls the `magick` luarock (only needed for processor = 'magick_rock')
+        build = false,
+        opts = {
+            backend = 'kitty',
+            processor = 'magick_cli',
+            integrations = {},
+            max_width_window_percentage = 100,
+            max_height_window_percentage = 50,
+        },
+    },
 
     'terryma/vim-multiple-cursors',
 
