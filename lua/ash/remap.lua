@@ -20,7 +20,7 @@ vim.keymap.set('v', '<leader>c', '"+y', { noremap = true, silent = true }) -- co
 vim.keymap.set('n', '\\', ':noh<CR>', { noremap = true, silent = true })   -- remove highlighted words from search
 vim.keymap.set('n', '\\', function()
     vim.cmd("noh")
-    require "notify".dismiss()
+    Snacks.notifier.hide()
 end, { noremap = true, silent = true }) -- remove highlighted words from search and dismiss notification
 
 

@@ -73,7 +73,6 @@ local plugins = {
             'nvim-lua/plenary.nvim', -- required by telescope
             'MunifTanjim/nui.nvim',
             'nvim-treesitter/nvim-treesitter',
-            'rcarriga/nvim-notify',
             '3rd/image.nvim',
             -- 'nvim-tree/nvim-web-devicons'
         },
@@ -196,15 +195,24 @@ local plugins = {
         end
     },
     {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        opts = {
+            notifier = { enabled = true },
+        },
+        keys = {
+            { "<leader>N", function() Snacks.notifier.show_history() end, desc = "Notification history" },
+        },
+    },
+    {
         "folke/noice.nvim",
         event = "VeryLazy",
         dependencies = {
             "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
+            "folke/snacks.nvim",
         },
-        init = function()
-            require("noice").setup()
-        end,
+        opts = {},
     },
     { 'David-Kunz/treesitter-unit' },
     {
