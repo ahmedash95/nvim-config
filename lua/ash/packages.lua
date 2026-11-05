@@ -252,6 +252,8 @@ local plugins = {
                 'TelescopeResultsNormal', 'TelescopeResultsBorder', 'TelescopeResultsTitle',
                 'TelescopePreviewNormal', 'TelescopePreviewBorder', 'TelescopePreviewTitle',
                 'TelescopePreviewMessage', 'TelescopePreviewMessageFillchar',
+                -- Empty part of the tabline; tab labels keep the theme's colours.
+                'TabLineFill',
             },
             -- Some themes (github_light) link TelescopeSelection to CursorLine,
             -- which transparent.nvim clears; fall back to Visual so the

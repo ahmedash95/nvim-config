@@ -19,6 +19,7 @@ vim.diagnostic.config({ virtual_text = false }) -- disable lsp inline errors dis
 
 require("ash.packages");
 require("ash.remap");
+require("ash.tabline")
 require("ash.ash_lsp")
 require("ash.tinker")
 require("ash.copyreference")
