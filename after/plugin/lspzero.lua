@@ -46,11 +46,21 @@ local function ash_disabled_servers()
     return exclude
 end
 
+local excluded_servers = ash_disabled_servers()
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = { "vtsls" },
     automatic_enable = {
-        exclude = ash_disabled_servers(),
+        exclude = excluded_servers,
     },
 })
+
+-- Servers installed outside Mason (e.g. Homebrew) aren't auto-enabled by mason-lspconfig.
+-- zls must match the project's Zig version, so it comes from `brew install zig zls`.
+for _, server in ipairs({ "zls" }) do
+    if not vim.tbl_contains(excluded_servers, server) and vim.fn.executable(server) == 1 then
+        vim.lsp.enable(server)
+    end
+end
 
