@@ -87,7 +87,10 @@ local plugins = {
         opts = {
             backend = 'kitty',
             processor = 'magick_cli',
-            integrations = {},
+            integrations = {
+                -- custom: ~/.config/nvim/lua/image/integrations/zig.lua
+                zig = { enabled = true },
+            },
             max_width_window_percentage = 100,
             max_height_window_percentage = 50,
         },
