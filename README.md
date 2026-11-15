@@ -17,7 +17,7 @@
 - **Fast file finding.** [fff.nvim](https://github.com/dmtrKovalenko/fff.nvim) and [Telescope](https://github.com/nvim-telescope/telescope.nvim). `<Space><Space>` opens `git_files` inside a git repo and `find_files` everywhere else.
 - **LSP with little setup.** mason, mason-lspconfig and nvim-cmp, plus per-server overrides in `after/lsp/` for `lua_ls`, `phpactor` and `vtsls`.
 - **PHP first.** phpactor, [php.easy.nvim](https://github.com/ta-tikoma/php.easy.nvim) for generating code, `php-cs-fixer` formatting, Blade treesitter queries and a built-in `:Tinker` REPL.
-- **Go and TS.** vim-go, gopher.nvim and nvim-dap-go for debugging, plus vtsls with inlay hints and imports that update when you move a file.
+- **Go and TS.** vim-go and nvim-dap-go for debugging, plus vtsls with inlay hints and imports that update when you move a file.
 - **Matches your terminal background.** The background color comes from the terminal (OSC 11), and dark/light mode follows macOS (`tokyonight-moon` / `github_light`).
 - **Testing and debugging.** vim-test runs tests in a toggleterm, and nvim-dap with dap-ui handles debugging.
 - **Per-project config.** Drop a `.ash.json` in a project to disable LSP servers or override the PHPUnit command.
@@ -33,7 +33,7 @@
 | A [Nerd Font](https://www.nerdfonts.com) | Icons (via `mini.icons`) |
 | `node` / `npm` | vtsls, prettier, Copilot |
 | `php`, `composer` | phpactor, php-cs-fixer, `:Tinker` |
-| `go` | vim-go, gopher.nvim, delve |
+| `go` | vim-go, delve |
 | [`lazygit`](https://github.com/jesseduffield/lazygit) | `<Space>g` |
 | `cargo` *(optional)* | Builds fff.nvim when no prebuilt binary is available |
 
@@ -60,7 +60,6 @@ nvim
 │   ├── packages.lua         # lazy.nvim bootstrap + plugin specs
 │   ├── remap.lua            # keymaps
 │   ├── ash_config.lua       # per-project .ash.json reader
-│   ├── tpicker.lua          # prettier Telescope file/grep pickers
 │   ├── tinker.lua           # :Tinker PHP scratchpad
 │   ├── copyreference.lua    # :CopyReference
 │   └── rex.lua              # open lazygit in a Rex floating pane

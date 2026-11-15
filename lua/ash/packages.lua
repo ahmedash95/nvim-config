@@ -96,11 +96,7 @@ local plugins = {
         },
     },
 
-    'terryma/vim-multiple-cursors',
-
     'projekt0n/github-nvim-theme',
-
-    'mhartington/formatter.nvim',
 
     'nvim-tree/nvim-tree.lua',
 
@@ -133,45 +129,16 @@ local plugins = {
     },
 
     {
-        'numToStr/Comment.nvim',
-        init = function()
-            require('Comment').setup()
-        end
-    },
-
-    { "catppuccin/nvim",         as = "catppuccin" },
-
-
-    {
         'nvim-lualine/lualine.nvim',
     },
 
-    {
-        "nvim-telescope/telescope-live-grep-args.nvim",
-        init = function()
-            require("telescope").load_extension("live_grep_args")
-        end
-    },
     {
         'andrew-george/telescope-themes',
         init = function()
             require('telescope').load_extension('themes')
         end
     },
-    {
-        'jonarrien/telescope-cmdline.nvim',
-        init = function()
-            require('telescope').load_extension('cmdline')
-        end,
-    },
     { 'akinsho/toggleterm.nvim', version = "*",    config = true },
-    {
-        'nosduco/remote-sshfs.nvim',
-        init = function()
-            require('remote-sshfs').setup({})
-            require('telescope').load_extension 'remote-sshfs'
-        end
-    },
     { 'mfussenegger/nvim-dap' },
     { 'jbyuki/one-small-step-for-vimkind' },
     { "rcarriga/nvim-dap-ui",             dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
@@ -210,23 +177,6 @@ local plugins = {
     },
     { 'David-Kunz/treesitter-unit' },
     {
-        "christoomey/vim-tmux-navigator",
-        cmd = {
-            "TmuxNavigateLeft",
-            "TmuxNavigateDown",
-            "TmuxNavigateUp",
-            "TmuxNavigateRight",
-            "TmuxNavigatePrevious",
-        },
-        keys = {
-            { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
-            { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
-            { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
-            { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
-            { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-        },
-    },
-    {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
         config = true
@@ -237,7 +187,6 @@ local plugins = {
         opts = function() return require('ash.glass').opts end,
     },
     { 'fatih/vim-go' },
-    { 'olexsmir/gopher.nvim' },
     { 'vim-test/vim-test' },
     {
         'smoka7/hop.nvim',
@@ -272,9 +221,6 @@ local plugins = {
             'kristijanhusak/vim-dadbod-ui',
             'kristijanhusak/vim-dadbod-completion'
         },
-    },
-    {
-        'shaunsingh/solarized.nvim'
     },
     {
         "folke/which-key.nvim",
