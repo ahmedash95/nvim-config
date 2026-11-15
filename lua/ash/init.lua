@@ -15,6 +15,8 @@ vim.opt.inccommand = "split"                    -- show preview when search&repl
 
 vim.cmd([[ set nofoldenable]])                  -- Disable folding
 
+require('vim._core.ui2').enable({})             -- Built-in cmdline/messages UI (experimental, 0.12+)
+
 vim.diagnostic.config({ virtual_text = false }) -- disable lsp inline errors display (use space+e to show errors in popup)
 
 require("ash.packages");

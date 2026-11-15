@@ -13,7 +13,7 @@ local M = {}
 -- Cleared on top of transparent.nvim's defaults (Normal, StatusLine,
 -- SignColumn, CursorLine, LineNr, EndOfBuffer...). Missing groups are harmless.
 local groups = {
-    -- Floats: hover, which-key, lazy, mason, noice, cmp, telescope
+    -- Floats: hover, which-key, lazy, mason, cmp, telescope
     'NormalFloat', 'FloatBorder', 'FloatTitle', 'FloatFooter',
     'Pmenu', 'PmenuExtra', 'PmenuKind', 'PmenuMatch', 'PmenuBorder',
     'WhichKeyNormal', 'WhichKeyFloat', 'WhichKeyBorder',

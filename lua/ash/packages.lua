@@ -208,15 +208,6 @@ local plugins = {
             { "<leader>N", function() Snacks.notifier.show_history() end, desc = "Notification history" },
         },
     },
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "folke/snacks.nvim",
-        },
-        opts = {},
-    },
     { 'David-Kunz/treesitter-unit' },
     {
         "christoomey/vim-tmux-navigator",
