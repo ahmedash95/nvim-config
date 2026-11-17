@@ -22,6 +22,18 @@ vim.diagnostic.config({ virtual_text = false }) -- disable lsp inline errors dis
 require("ash.packages");
 require("ash.remap");
 require("ash.tabline")
-require("ash.ash_lsp")
 require("ash.tinker")
 require("ash.copyreference")
+
+-- Terminal buffers: jk leaves terminal mode, <C-hjkl> moves between windows
+vim.api.nvim_create_autocmd('TermOpen', {
+    group = vim.api.nvim_create_augroup('AshTerminal', { clear = true }),
+    callback = function(ev)
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+        for _, dir in ipairs({ 'h', 'j', 'k', 'l' }) do
+            vim.keymap.set('t', '<C-' .. dir .. '>', [[<C-\><C-n><C-w>]] .. dir, opts)
+        end
+        vim.cmd.startinsert()
+    end,
+})

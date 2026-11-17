@@ -53,19 +53,9 @@ local plugins = {
         branch = 'main',
         build = ':TSUpdate'
     },
-    {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
-        dependencies = {
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
-
-            { 'neovim/nvim-lspconfig' },
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'L3MON4D3/LuaSnip' },
-        }
-    },
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
     {
         'kawre/leetcode.nvim',
         dependencies = {
@@ -100,22 +90,7 @@ local plugins = {
 
     'nvim-tree/nvim-tree.lua',
 
-    'phpactor/phpactor',
-
     'lewis6991/gitsigns.nvim',
-
-    'ahmedash95/deep-symbols',
-
-    'github/copilot.vim',
-
-    {
-        'Pocco81/auto-save.nvim',
-        config = function()
-            require('auto-save').setup({
-                execution_message = { message = function() return "" end }
-            })
-        end
-    },
 
     'tpope/vim-fugitive',
 
@@ -138,7 +113,6 @@ local plugins = {
             require('telescope').load_extension('themes')
         end
     },
-    { 'akinsho/toggleterm.nvim', version = "*",    config = true },
     { 'mfussenegger/nvim-dap' },
     { 'jbyuki/one-small-step-for-vimkind' },
     { "rcarriga/nvim-dap-ui",             dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
@@ -196,14 +170,6 @@ local plugins = {
 
     },
     {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require("harpoon").setup()
-        end
-    },
-    {
         'rmagatti/auto-session',
         config = function()
             vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
@@ -244,12 +210,6 @@ local plugins = {
     {
         'ta-tikoma/php.easy.nvim',
         config = true,
-    },
-    {
-        'onsails/lspkind.nvim',
-        init = function()
-            require('lspkind').setup()
-        end
     },
     {
         "echasnovski/mini.icons",

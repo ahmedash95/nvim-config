@@ -17,7 +17,6 @@ vim.keymap.set('n', 'vsp', ':vsp<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', ';;', ':LspRestart<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('v', '<leader>c', '"+y', { noremap = true, silent = true }) -- copy text to clipboard
-vim.keymap.set('n', '\\', ':noh<CR>', { noremap = true, silent = true })   -- remove highlighted words from search
 vim.keymap.set('n', '\\', function()
     vim.cmd("noh")
     Snacks.notifier.hide()
@@ -51,9 +50,7 @@ vim.keymap.set('n', '<leader>ps', ":Telescope live_grep<CR>", { noremap = true, 
 
 vim.keymap.set("n", "<leader>1", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>2", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>3", ":ToggleTerm<CR>", { noremap = true, silent = true })
-
-vim.keymap.set("n", "<leader>o", ":lua require(\"deepsymbols\").get_symbols()<CR>")
+vim.keymap.set("n", "<leader>3", ":botright 20split | terminal<CR>", { noremap = true, silent = true })
 
 
 -- phpactor
@@ -137,30 +134,6 @@ vim.keymap.set('n', '<leader>dl', ':lua require"dap-go".debug_last_test()<CR>', 
 --hop
 vim.keymap.set('', 'f', ":HopWord<CR>", { noremap = true, silent = true })
 
--- Harpoon
-local harpoon = require("harpoon")
-local conf = require("telescope.config").values
-local function toggle_telescope(harpoon_files)
-    local file_paths = {}
-    for _, item in ipairs(harpoon_files.items) do
-        table.insert(file_paths, item.value)
-    end
-
-    require("telescope.pickers").new({}, {
-        prompt_title = "Harpoon",
-        finder = require("telescope.finders").new_table({
-            results = file_paths,
-        }),
-        previewer = conf.file_previewer({}),
-        sorter = conf.generic_sorter({}),
-    }):find()
-end
-
-vim.keymap.set("n", "<leader>.", function() harpoon:list():add() end)
-vim.keymap.set("n", "<leader>h", function() toggle_telescope(harpoon:list()) end)
-vim.keymap.set("n", "<leader>j", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<leader>k", function() harpoon:list():next() end)
-
 
 vim.keymap.set('n', '<leader>g', function() require('ash.rex').lazygit() end, { noremap = true, silent = true, desc = 'LazyGit (Rex float)' })
 
@@ -169,7 +142,6 @@ vim.keymap.set('n', '<leader>g', function() require('ash.rex').lazygit() end, { 
 vim.api.nvim_set_keymap('n', '-#', '<CMD>PHPEasyAttribute<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '-b', '<CMD>PHPEasyDocBlock<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '-r', '<CMD>PHPEasyReplica<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '-c', '<CMD>PHPEasyCopy<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '-d', '<CMD>PHPEasyDelete<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '-uu', '<CMD>PHPEasyRemoveUnusedUses<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '-e', '<CMD>PHPEasyExtends<CR>', { noremap = true, silent = true })

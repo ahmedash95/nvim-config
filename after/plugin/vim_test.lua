@@ -1,6 +1,6 @@
 local ash_config = require "ash.ash_config".read()
 
-vim.g['test#strategy'] = "toggleterm"
+vim.g['test#strategy'] = "neovim"
 
 if ash_config['phpunit.cmd'] then
     vim.g['test#php#phpunit#executable'] = ash_config['phpunit.cmd']

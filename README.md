@@ -15,13 +15,14 @@
 ## ✨ Highlights
 
 - **Fast file finding.** [fff.nvim](https://github.com/dmtrKovalenko/fff.nvim) and [Telescope](https://github.com/nvim-telescope/telescope.nvim). `<Space><Space>` opens `git_files` inside a git repo and `find_files` everywhere else.
-- **LSP with little setup.** mason, mason-lspconfig and nvim-cmp, plus per-server overrides in `after/lsp/` for `lua_ls`, `phpactor` and `vtsls`.
+- **LSP with little setup.** mason and mason-lspconfig with Neovim's built-in completion (`'autocomplete'` + `vim.lsp.completion`), plus per-server overrides in `after/lsp/` for `lua_ls`, `phpactor` and `vtsls`.
 - **PHP first.** phpactor, [php.easy.nvim](https://github.com/ta-tikoma/php.easy.nvim) for generating code, `php-cs-fixer` formatting, Blade treesitter queries and a built-in `:Tinker` REPL.
 - **Go and TS.** vim-go and nvim-dap-go for debugging, plus vtsls with inlay hints and imports that update when you move a file.
 - **Matches your terminal background.** The background color comes from the terminal (OSC 11), and dark/light mode follows macOS (`tokyonight-moon` / `github_light`).
-- **Testing and debugging.** vim-test runs tests in a toggleterm, and nvim-dap with dap-ui handles debugging.
+- **Testing and debugging.** vim-test runs tests in a built-in terminal split, and nvim-dap with dap-ui handles debugging.
 - **Per-project config.** Drop a `.ash.json` in a project to disable LSP servers or override the PHPUnit command.
-- **Small extras.** Harpoon 2, hop, true-zen (narrow to a treesitter unit with `Z`), auto-save, auto-session, noice and which-key.
+- **Copilot.** `copilot-language-server` (via Mason) with Neovim's built-in inline completion. `<Tab>` accepts a suggestion. Sign in once with `:LspCopilotSignIn`.
+- **Small extras.** hop, true-zen (narrow to a treesitter unit with `Z`), auto-session and which-key.
 
 ## 📦 Requirements
 
@@ -121,20 +122,9 @@ nvim
 | `<leader>[` / `<leader>]` | Jump list back / forward |
 | `f` | Hop to word |
 | `<leader>1` / `<leader>2` | Toggle file tree / reveal current file |
-| `<leader>3` | Toggle terminal |
+| `<leader>3` | Open terminal split (`jk` leaves terminal mode) |
 | `<leader>g` | LazyGit |
 | `\` | Clear search highlight and dismiss notifications |
-
-</details>
-
-<details>
-<summary><b>Harpoon</b></summary>
-
-| Key | Action |
-| --- | --- |
-| `<leader>.` | Add file |
-| `<leader>h` | List files (Telescope) |
-| `<leader>j` / `<leader>k` | Previous / next file |
 
 </details>
 
