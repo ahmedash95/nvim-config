@@ -8,7 +8,7 @@ vim.filetype.add({
 local ts = require('nvim-treesitter')
 
 ts.install({ "c", "lua", "vim", "vimdoc", "query", "javascript", "java", "php", "blade", "regex", "go", "zig",
-    "markdown", "markdown_inline", "html" })
+    "markdown", "markdown_inline", "html", "typescript", "tsx", "json", "yaml", "dockerfile" })
 
 vim.api.nvim_create_autocmd('FileType', {
     callback = function(args)
