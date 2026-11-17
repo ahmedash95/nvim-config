@@ -208,6 +208,15 @@ local plugins = {
         opts = {},
     },
     {
+        'MeanderingProgrammer/render-markdown.nvim',
+        ft = { 'markdown' },
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
+        opts = {},
+        keys = {
+            { '<leader>mp', '<cmd>RenderMarkdown toggle<cr>', ft = 'markdown', desc = 'Toggle markdown render' },
+        },
+    },
+    {
         'ta-tikoma/php.easy.nvim',
         config = true,
     },
