@@ -55,7 +55,7 @@ local function setup()
             component_separators = solid and { left = '', right = '' } or { left = '│', right = '│' },
             section_separators = solid and { left = '', right = '' } or { left = ' ', right = ' ' },
             disabled_filetypes = {
-                statusline = {},
+                statusline = { 'NvimTree' },
                 winbar = {},
             },
             ignore_focus = {},
@@ -83,10 +83,7 @@ local function setup()
             lualine_z = {}
         },
         winbar = {},
-        inactive_winbar = {},
-        extensions = {
-            'nvim-tree'
-        }
+        inactive_winbar = {}
     }
 end
 
