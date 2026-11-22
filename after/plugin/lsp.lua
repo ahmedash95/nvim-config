@@ -56,6 +56,13 @@ end
 local excluded_servers = ash_disabled_servers()
 
 require('mason').setup({})
+
+-- copilot isn't mapped in mason-lspconfig, so ensure_installed can't cover it.
+local registry = require('mason-registry')
+registry.refresh(function()
+    local ok, pkg = pcall(registry.get_package, 'copilot-language-server')
+    if ok and not pkg:is_installed() then pkg:install() end
+end)
 require('mason-lspconfig').setup({
     ensure_installed = { "vtsls" },
     automatic_enable = {
