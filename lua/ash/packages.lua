@@ -207,6 +207,26 @@ local plugins = {
         priority = 1000,
         opts = {},
     },
+    -- extra themes, each with dark + light variants
+    { 'catppuccin/nvim',         name = 'catppuccin', lazy = false, priority = 1000 }, -- catppuccin-mocha / -latte
+    { 'rose-pine/neovim',        name = 'rose-pine',  lazy = false, priority = 1000 }, -- rose-pine-main / -dawn
+    { 'rebelot/kanagawa.nvim',   lazy = false,        priority = 1000 },               -- kanagawa-wave / -lotus
+    { 'EdenEast/nightfox.nvim',  lazy = false,        priority = 1000 },               -- nightfox, carbonfox / dayfox, dawnfox
+    { 'sainnhe/everforest',      lazy = false,        priority = 1000 },               -- everforest (follows 'background')
+    { 'loctvl842/monokai-pro.nvim', lazy = false,     priority = 1000 },               -- monokai-pro, -classic, -spectrum ... / -light
+    {
+        'lalitmee/cobalt2.nvim', -- cobalt2 (dark only)
+        dependencies = { 'tjdevries/colorbuddy.nvim' },
+        lazy = false,
+        priority = 1000,
+        config = function()
+            -- its colors/cobalt2.vim is empty; the theme only loads via colorbuddy
+            vim.api.nvim_create_autocmd('ColorScheme', {
+                pattern = 'cobalt2',
+                callback = function() require('colorbuddy').colorscheme('cobalt2') end,
+            })
+        end,
+    },
     {
         'MeanderingProgrammer/render-markdown.nvim',
         ft = { 'markdown' },
