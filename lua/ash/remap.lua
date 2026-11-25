@@ -133,3 +133,6 @@ vim.api.nvim_set_keymap('v', '-m', '<CMD>PHPEasyAppendMethod<CR>', { noremap = t
 vim.api.nvim_set_keymap('n', '__', '<CMD>PHPEasyAppendConstruct<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '_i', '<CMD>PHPEasyAppendInvoke<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '-a', '<CMD>PHPEasyAppendArgument<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_create_user_command('ToggleBlame', 'Gitsigns toggle_current_line_blame', {})
+vim.cmd([[cnoreabbrev <expr> toggle_blame getcmdtype() == ':' && getcmdline() ==# 'toggle_blame' ? 'ToggleBlame' : 'toggle_blame']])
