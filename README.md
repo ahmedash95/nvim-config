@@ -22,7 +22,8 @@
 - **Testing and debugging.** vim-test runs tests in a built-in terminal split, and nvim-dap with dap-ui handles debugging.
 - **Per-project config.** Drop a `.ash.json` in a project to disable LSP servers or override the PHPUnit command.
 - **Copilot.** `copilot-language-server` (via Mason) with Neovim's built-in inline completion. `<Tab>` accepts a suggestion. Sign in once with `:LspCopilotSignIn`.
-- **Small extras.** hop, true-zen (narrow to a treesitter unit with `Z`), auto-session and which-key.
+- **Scope focus.** Treesitter finds the function or class under the cursor. `<leader>zz` shows only that scope, centered and sized to fit, like VS Code zen mode (press again or leave the scope to exit). `<leader>zp` opens it in a floating pane that stays until `:q`/`:wq`. `<leader>zd` dims everything outside the scope and follows the cursor.
+- **Small extras.** hop, auto-session and which-key.
 
 ## 📦 Requirements
 

@@ -80,37 +80,10 @@ vim.keymap.set('n', '<leader>d', ':lua require"osv".launch({port = 8086})<CR>', 
 vim.keymap.set('n', '<leader>do', ':lua require"dapui".toggle()<CR>', { noremap = true, silent = true })
 
 
--- ZenMode
-vim.keymap.set('v', 'Z', ':TZNarrow<CR>')
-vim.keymap.set('n', 'Z', function()
-    -- Trigger treesitter-unit to make the selection
-    require "treesitter-unit".select()
-
-    -- Defer the execution to ensure the selection is made
-    vim.defer_fn(function()
-        -- Get the first and last lines of the current visual selection
-        local first = vim.fn.line('v')
-        local last = vim.fn.line('.')
-
-        -- Load the truezen API
-        local truezen = require("true-zen")
-
-        -- Apply the narrowing using the truezen plugin
-        truezen.narrow(first, last)
-
-        -- Optionally, you might want to clear the selection or return to normal mode
-        -- vim.cmd('normal! <Esc>') -- to return to normal mode if needed
-    end, 100) -- Adjust the delay as needed; it might work with less delay
-end, { noremap = true, silent = true })
-
-
--- True Zen
-vim.keymap.set('n', '<leader>zz', ':TZAtaraxis<CR>', { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>zn", ":TZNarrow<CR>", { noremap = true, silent = true })
-vim.keymap.set("v", "<leader>zn", ":'<,'>TZNarrow<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>zf", ":TZFocus<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>zm", ":TZMinimalist<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>za", ":TZAtaraxis<CR>", { noremap = true, silent = true })
+-- Scope focus: hide everything but the function/class under the cursor
+vim.keymap.set('n', '<leader>zz', function() require('ash.scope_focus').toggle() end, { desc = 'Scope focus: zen' })
+vim.keymap.set('n', '<leader>zp', function() require('ash.scope_focus').pane() end, { desc = 'Scope focus: floating pane' })
+vim.keymap.set('n', '<leader>zd', function() require('ash.scope_focus').toggle_dim() end, { desc = 'Scope focus: dim outside scope' })
 
 
 -- Window navigation keymaps

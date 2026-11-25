@@ -123,22 +123,6 @@ local plugins = {
         end
     },
     {
-        "Pocco81/true-zen.nvim",
-        config = function()
-            require("true-zen").setup({
-                modes = {
-                    narrow = {
-                        folds_style = "invisible",
-                        run_ataraxis = true,
-                    }
-                },
-                integrations = {
-                    lualine = true,
-                },
-            })
-        end
-    },
-    {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
@@ -149,7 +133,6 @@ local plugins = {
             { "<leader>N", function() Snacks.notifier.show_history() end, desc = "Notification history" },
         },
     },
-    { 'David-Kunz/treesitter-unit' },
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
